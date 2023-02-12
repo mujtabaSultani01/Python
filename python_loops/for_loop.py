@@ -21,7 +21,7 @@ for i in range(len(exp)):
      total = total + exp[i]
 print("Total expense is: ", total)
 
-#simple while loop example:
+# simple while loop example:
 i = 0
 while i <= 10:
     print(i)
