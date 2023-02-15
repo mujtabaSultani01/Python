@@ -1,0 +1,26 @@
+"""
+The key difference between Multithreading and Multiprocessing is, in Multithreading you will see the result being fill
+outside the function but in Multiprocessing you won't see the result outside the function.
+So let's solve the problem and share data between two processes. For that we use Shared Memory concept.
+There are couple of ways using shared memory: 1) value 2) array
+Let's first see the array and then value:
+"""
+
+import multiprocessing
+
+
+def calculate_square(numbers, res):
+    for idx, n in enumerate(numbers):
+        res[idx] = n*n
+
+
+if __name__ == "__main__":
+    array = [2,3,4,5]
+    result = multiprocessing.Array('i', 4)
+    P1 = multiprocessing.Process(target=calculate_square, args=(array, result))
+
+    P1.start()
+    P1.join()
+
+    print("Result: " + str(result[:]))
+    print("Let's done it...")
